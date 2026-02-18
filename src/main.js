@@ -1,50 +1,52 @@
 function init() {
     // page setup
-    
+
     const d = document;
-    
-    const percent = document.querySelector('.loader');
-    let p = 10;
-    
-    function loadPage() {
-        const iLib = Array.from(d.images);
-    
-        function updatePercent() {
-            p += 100 / iLib.length
-            percent.textContent = `${Math.min(100,Math.floor(p))}%`;
-        }
-        
-        iLib.forEach(img => {
-            if (img.complete) {
-                updatePercent();
-            } else {
-                img.addEventListener('load', () => {
-                    updatePercent();
-                });
-            }
-        });
-    
-        const loader = setInterval(() => {
-            if (p >= 100) {
-                clearInterval(loader)
-                setTimeout(() => {
-                    d.body.style.overflow = 'visible';
-                    d.querySelector('.loader').style.display = 'none';
-                }, 300);
-            }
-        }, 60);
-    }
-    loadPage();
     
     if (screen.width < screen.height) {
         document.body.innerHTML = `
-            <div class="alert-switch-to-desktop">
-                <p><mark>M</mark>obile version of our website is yet unavailable.<br>We are working hard to build it!</p>
-                <h5>Please switch to desktop version!</h5>
-                <img id="bg" src='public/icons/build.svg'>
+            <div class='alert-switch-to-desktop'>
+                <div>
+                    <p><mark>M</mark>obile version is unavailable.<br>We are working hard to build it!</p>
+                    <h5>Please switch to desktop version!</h5>
+                </div>
+                <img id='bg' src='public/icons/build.svg'>
             </div>
         `;
         return;
+    } else {
+        const percent = document.querySelector('.loader');
+        let p = 10;
+        
+        function loadPage() {
+            const iLib = Array.from(d.images);
+        
+            function updatePercent() {
+                p += 100 / iLib.length
+                percent.textContent = `${Math.min(100,Math.floor(p))}%`;
+            }
+            
+            iLib.forEach(img => {
+                if (img.complete) {
+                    updatePercent();
+                } else {
+                    img.addEventListener('load', () => {
+                        updatePercent();
+                    });
+                }
+            });
+        
+            const loader = setInterval(() => {
+                if (p >= 100) {
+                    clearInterval(loader)
+                    setTimeout(() => {
+                        d.body.style.overflow = 'visible';
+                        d.querySelector('.loader').style.display = 'none';
+                    }, 300);
+                }
+            }, 60);
+        }
+        loadPage();
     }
 
     const galleryWrapper = d.querySelector('.gallery-inner-wrapper');
