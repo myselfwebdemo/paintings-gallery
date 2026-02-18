@@ -4,6 +4,41 @@ const d = document;
 
 // page setup
 
+const percent = document.querySelector('.loader');
+let p = 0;
+
+function loadPage() {
+    const iLib = Array.from(d.images);
+
+    function updatePercent() {
+        p += 100 / iLib.length
+        percent.textContent = `${Math.min(100,Math.floor(p))}%`;
+    }
+    
+    iLib.forEach(img => {
+        if (img.complete) {
+            updatePercent();
+        } else {
+            img.addEventListener('load', () => {
+                updatePercent();
+            });
+        }
+    });
+
+    p+=10;
+
+    const loader = setInterval(() => {
+        if (p >= 100) {
+            clearInterval(loader)
+            setTimeout(() => {
+                d.body.style.overflow = 'visible';
+                d.querySelector('.loader').style.display = 'none';
+            }, 300);
+        }
+    }, 60);
+}
+loadPage();
+
 const galleryWrapper = d.querySelector('.gallery-inner-wrapper');
 const galleryItems = d.querySelectorAll('.gal-el-wrap');
 let count = 0;
@@ -13,33 +48,6 @@ galleryItems.forEach(item => {
     item.style.setProperty('--n', count);
 });
 galleryWrapper.style.setProperty('--tn', count);
-
-const percent = document.querySelector('.loader');
-const openingText = d.querySelector('.opening span');
-let p = 0;
-
-function loadPage() {
-    const loader = setInterval(() => {
-        p += Math.random() * 4;
-        
-        onload = () => {
-            p += 100;
-        }
-        
-        if (p >= 100) {
-            p = 100;
-            clearInterval(loader);
-            setTimeout(() => {
-                d.body.style.overflow = 'visible';
-                d.querySelector('.loader').style.display = 'none';
-            }, 300);
-        }
-        
-        percent.textContent = `${Math.floor(p)}%`;
-    }, 60);
-    window.addEventListener('load', () => p += 50);
-}
-loadPage();
 
 
 
