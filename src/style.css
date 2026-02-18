@@ -23,6 +23,34 @@ body {
     background-color: var(--theme-bg-color);
 }
 
+.alert-switch-to-desktop {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 7vw;
+}
+.alert-switch-to-desktop h1 {
+    margin-right: auto;
+    margin-bottom: 1vh;
+}
+.alert-switch-to-desktop p {
+    color: var(--theme-text-color);
+    margin-bottom: 20vh;
+}
+.alert-switch-to-desktop img {
+    --size: 70vh;
+    bottom: -20%;
+    left: 50%;
+    position: fixed;
+    width: var(--size);
+    height: var(--size);
+    transform: translateX(-50%);
+    filter: invert(6%);
+}
+
 .pnot {
     text-transform: none;
 }
