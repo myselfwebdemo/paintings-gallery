@@ -44,11 +44,9 @@ body {
     margin-left: auto;
     margin-bottom: 1vh;
 }
-.alert-switch-to-desktop h1 {
-    margin-right: auto;
-    margin-bottom: 1vh;
-}
 .alert-switch-to-desktop p {
+    margin-right: auto;
+    text-transform: none;
     color: var(--theme-text-color);
 }
 .alert-switch-to-desktop mark {
@@ -62,8 +60,8 @@ body {
     color: #ffffff2c;
 }
 .alert-switch-to-desktop #bg {
-    --size: 80vh;
-    bottom: -20%;
+    --size: 85vh;
+    bottom: -30%;
     left: 50%;
     position: fixed;
     transform: translateX(-50%);
