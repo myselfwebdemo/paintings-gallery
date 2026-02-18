@@ -32,23 +32,41 @@ body {
     justify-content: center;
     padding: 7vw;
 }
+.alert-switch-to-desktop #bg, 
+.alert-switch-to-desktop #shock {
+    --size: 10vh;
+    width: var(--size);
+    height: var(--size);
+    filter: invert(6%);
+    z-index: 0;
+}
+.alert-switch-to-desktop #shock {
+    margin-left: auto;
+    margin-bottom: 1vh;
+}
 .alert-switch-to-desktop h1 {
     margin-right: auto;
     margin-bottom: 1vh;
 }
 .alert-switch-to-desktop p {
     color: var(--theme-text-color);
-    margin-bottom: 20vh;
 }
-.alert-switch-to-desktop img {
-    --size: 70vh;
+.alert-switch-to-desktop mark {
+    background: none;
+    font-size: x-large;
+}
+.alert-switch-to-desktop h5 {
+    margin: 3vh 0 20vh 0;
+    font-style: italic;
+    font-weight: 400;
+    color: #ffffff2c;
+}
+.alert-switch-to-desktop #bg {
+    --size: 80vh;
     bottom: -20%;
     left: 50%;
     position: fixed;
-    width: var(--size);
-    height: var(--size);
     transform: translateX(-50%);
-    filter: invert(6%);
 }
 
 .pnot {

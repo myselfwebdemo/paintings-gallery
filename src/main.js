@@ -39,11 +39,12 @@ function init() {
     loadPage();
     
     if (window.innerWidth < window.innerHeight) {
+        // <img id="shock" src="public/icons/shocka.png">
         document.body.innerHTML = `
             <div class="alert-switch-to-desktop">
-                <h1>Oh-oh</h1>
-                <p>Modile version of our website is yet unavailable. We are working hard to build it!</p>
-                <img src='public/icons/build.svg'>
+                <p><mark>M</mark>obile version of our website is yet unavailable. We are working hard to build it!</p>
+                <h5>Please switch to desktop version!</h5>
+                <img id="bg" src='public/icons/build.svg'>
             </div>
         `;
         return;
