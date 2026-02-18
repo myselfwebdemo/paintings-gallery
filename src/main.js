@@ -1,5 +1,9 @@
 const d = document;
 
+
+
+// page setup
+
 const galleryWrapper = d.querySelector('.gallery-inner-wrapper');
 const galleryItems = d.querySelectorAll('.gal-el-wrap');
 let count = 0;
@@ -38,6 +42,8 @@ function loadPage() {
 loadPage();
 
 
+
+// main
 
 const view = d.querySelector('.fs.view');
 const aside = d.querySelector('aside');
@@ -87,12 +93,14 @@ function openSelectedItem(e) {
     const item = tar.closest('.gal-el-wrap');
     if (!item) return;
 
+    const src = tar.src.replace('/compressed/', '/');
+
     const asideContent = aside.children[0];
     readAreaSwitch.classList.remove('mra-closed');
     readAreaSwitch.classList.add('mra-opened');
 
-    asideContent.children[0].src = tar.src;
-    view.children[0].src = tar.src;
+    asideContent.children[0].src = src;
+    view.children[0].src = src;
     asideContent.children[1].textContent = tar.dataset.title;
     asideContent.children[2].textContent = 'canvas: ' + tar.dataset.canvas;
     asideContent.children[3].textContent = 'size: ' + tar.dataset.size + 'cm';
